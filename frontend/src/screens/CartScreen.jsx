@@ -21,6 +21,10 @@ const CartScreen = () => {
     dispatch(removeFromCart(id))
   }
 
+  const checkoutHandler = () => {
+    navigate('/login?redirect=shipping')
+  }
+
   return (
     <Row>
       <Col md={8}>
@@ -80,7 +84,12 @@ const CartScreen = () => {
               ${ cartItems.reduce((acc, item) => acc + Number(item.qty) * item.price, 0).toFixed(2) }
             </ListGroup.Item>
             <ListGroupItem>
-              <Button type='button' className='bin-block' disabled={ cartItems.length === 0 }>
+              <Button 
+                type='button' 
+                className='bin-block' 
+                disabled={ cartItems.length === 0 }
+                onClick={ checkoutHandler }
+              >
                 Proceed To Checkout
               </Button>
             </ListGroupItem>
